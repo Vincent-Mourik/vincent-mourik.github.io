@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Research | {{ site.title }}</title>
+        <link rel="stylesheet" href="{{ site.url }}/assets/styles/styles.css">
+    </head>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <body>
+        {% include nav.html %}
+
+        <div class="text">
+            {{ content }}
+        </div>
+
+        {% assign i = 0 %}
+        {% for topic in site.data.research %}
+            <div class="research-card">
+            {% assign check = i | modulo:2 %}
+            {% if check == 0 %}
+                <div class="research-text-left">
+                
+                    <h2>{{ topic.title }}</h2>
+                    {{ topic.content }} <br>
+                    {% if topic.paper %}
+                        <a href="{{ topic.paper }}">
+                            <div class="card-button"><i class="feather-small" data-feather="file-text"></i> Paper</div></a>
+                    {% endif %}
+                    {% if topic.code %}
+                        <a href="{{ topic.code }}">
+                            <div class="card-button"><i class="feather-small" data-feather="code"></i> Code</div></a>
+                    {% endif %}
+                    {% if topic.archive %}
+                        <a href="{{ topic.archive }}">
+                            <div class="card-button"><i class="feather-small" data-feather="archive"></i> Data</div>
+                        </a>
+                        
+                    {% endif %}
+                </div>
+                <div class="research-image"><img src="{{ topic.image }}" alt=""></div>
+            {% endif %}
+            {% if check != 0 %}
+
+                <div class="research-image"><img src="{{ topic.image }}" alt=""></div>
+                <div class="research-text-right">
+                
+                    <h2>{{ topic.title }}</h2>
+                    {{ topic.content }} <br>
+                    {% if topic.paper %}
+                        <a href="{{ topic.paper }}">
+                            <div class="card-button"><i class="feather-small" data-feather="file-text"></i> Paper</div></a>
+                    {% endif %}
+                    {% if topic.code %}
+                        <a href="{{ topic.code }}">
+                            <div class="card-button"><i class="feather-small" data-feather="code"></i> Code</div></a>
+                    {% endif %}
+                    {% if topic.archive %}
+                        <a href="{{ topic.archive }}">
+                            <div class="card-button"><i class="feather-small" data-feather="archive"></i> Data</div>
+                        </a>
+                        
+                    {% endif %}
+                </div>
+                
+            {% endif %}
+            </div>
+            {% assign i = i | plus: 1 %}
+        {% endfor %}
+        
+        {% include foot.html %}
+        <script>
+            feather.replace()
+        </script>
+    </body>
+</html>

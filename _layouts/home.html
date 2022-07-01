@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home | {{ site.title }}</title>
+        <link rel="stylesheet" href="{{ site.url }}/assets/styles/styles.css">
+    </head>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <body>
+        {% include nav.html %}
+        <div class="banner">
+            <img src="{{ site.url }}/assets/images/random-qc.webp" alt="">
+        </div>
+
+        <div class="card-banner">
+            {% for card in site.data.cards limit:2 %}
+                <div class="card">
+                    <div class="card-top"><img src={{ card.image }}></div>
+                    <div class="card-bottom">
+                        {{ card.content }} <br>
+                        {% if card.paper %}
+                            <a href="{{ card.paper }}">
+                                <div class="card-button"><i class="feather-small" data-feather="file-text"></i> Paper</div></a>
+                        {% endif %}
+                        {% if card.code %}
+                            <a href="{{ card.code }}">
+                                <div class="card-button"><i class="feather-small" data-feather="code"></i> Code</div></a>
+                        {% endif %}
+                        {% if card.archive %}
+                            <a href="{{ card.archive }}">
+                                <div class="card-button"><i class="feather-small" data-feather="archive"></i> Data</div>
+                            </a>
+                            
+                        {% endif %}                      
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="spacer">
+            <h1>{{ page.lab-name }}</h1>
+                {{ content }}
+        </div>
+
+        <div class="news-cards">
+            <div class="news">
+                {% assign i = 0 %}
+                {% for news-item in site.posts %}
+                    {% if news-item.category == "News"%}
+                    {% assign i = i | plus:1 %}
+                    <div class="news-item">
+                        {{ news-item.title }} <br>
+                        <div class="card-button"><i class="feather-small" data-feather="calendar"></i> {{ news-item.date | date: "%d/%m" }} </div>
+                        {% if news-item.announcement %}
+                            <div class="card-button"><i class="feather-small" data-feather="trello"></i> <a href="{{ news-item.announcement }}">Announcement</a></div>
+                        {% endif %}
+                        {% if news-item.paper %}
+                            <div class="card-button"><i class="feather-small" data-feather="file-text"></i> <a href="{{ news-item.paper }}">Paper</a></div>
+                        {% endif %}
+                        {% if news-item.code %}
+                            <div class="card-button"><i class="feather-small" data-feather="code"></i> <a href="{{ news-item.code }}">Code</a></div>
+                        {% endif %}
+                        {% if news-item.data %}
+                            <div class="card-button"><i class="feather-small" data-feather="archive"></i> <a href="{{ news-item.data }}">Data</a></div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    {% if i== 5 %}
+                    {% break %}
+                    {% endif %}
+                {% endfor %}                
+            </div>
+    
+            <div class="cards">
+                {% for card in site.data.cards offset: 2 limit: 2 %}
+                    <div class="card">
+                        <div class="card-top"><img src={{ card.image }}></div>
+                        <div class="card-bottom">
+                            {{ card.content }} <br>
+                            {% if card.paper %}
+                                <a href="{{ card.paper }}">
+                                    <div class="card-button"><i class="feather-small" data-feather="file-text"></i> Paper</div></a>
+                            {% endif %}
+                            {% if card.code %}
+                                <a href="{{ card.code }}">
+                                    <div class="card-button"><i class="feather-small" data-feather="code"></i> Code</div></a>
+                            {% endif %}
+                            {% if card.archive %}
+                                <a href="{{ card.archive }}">
+                                    <div class="card-button"><i class="feather-small" data-feather="archive"></i> Data</div>
+                                </a>
+                                
+                            {% endif %}                      
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% include foot.html %}
+        <script>
+            feather.replace()
+        </script>
+    </body>
+</html>

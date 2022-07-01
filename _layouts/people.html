@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home | {{ site.title }}</title>
+        <link rel="stylesheet" href="{{ site.url }}/assets/styles/styles.css">
+    </head>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <body>
+        {% include nav.html %}
+        <div class="text">
+            {{ content }}
+        </div>
+        
+        <div class="pi-card">
+            <div class="pi-text"></div>
+            <div class="pi-image"></div>
+        </div>
+
+
+        {% for position in site.data.people %}            
+            {% for person in position.people %}
+            <div class="people-card">
+                <div class="people-image">
+                    <img src="{{ person.image }}">
+                </div>
+                <div class="people-text">
+                    <div style="display:inline-block; font-size: 22px; opacity: 0.8;"><b>{{person.first-name}}</b></div>
+                    <div style="display:inline-block; font-size: 22px; opacity: 1.0;"><b>{{person.last-name | upcase}}</b></div>
+                    <div style="padding: 10px 0; font-size: 18px; opacity: 0.7;"><b>{{position.position}}</b></div>
+                    <div style="padding: 5px 0"><b>RESEARCH TOPIC</b></div>
+                    {{ person.area_of_research }} <br> <br>
+                    <b>Summary:</b> {{ person.research_summary }} <br>
+                    <div class="card-button"><a href="{{ person.contact }}">{{ person.contact }}</a></div>
+                    <!-- <a href="mailto:{{ person.contact }}"><i class="feather-small" data-feather="mail"></i> {{ person.contact }}</a> -->
+                </div>
+            </div>
+            {% endfor %}
+        {% endfor %}
+        <!-- <div class="pi">
+            <div class="pi-name"></div>
+            <div class="pi-info"></div>
+        </div>
+        <div class="student">
+            <div class="student-name"></div>
+            <div class="student-photo"></div>
+            <div class="student-info"></div>
+        </div> -->
+        {% include foot.html %}
+        <script>
+            feather.replace()
+        </script>
+    </body>
+</html>

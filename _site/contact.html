@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact | Something</title>
+        <link rel="stylesheet" href="http://localhost:4000/assets/styles/styles.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+         <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+    </head>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <body>
+        <div class="nav">
+    <div class="nav-item"><a href="/research.html">Research</a></div>
+    <div class="nav-item"><a href="/">Publications</a></div>
+    <div class="nav-item"><a href="/people.html">People</a></div>
+    <div class="nav-item"><a href="/news.html">News</a></div>
+    <div class="nav-item"><a href="/">Funding</a></div>
+    <div class="nav-item"><a href="/contact.html">Contact</a></div>
+    <div class="nav-item"><a href="/">Open Positions</a></div>
+    <a class="logo" href="https://www.fz-juelich.de/de"><img src="http://localhost:4000/assets/images/fzj-logo.svg" alt=""></a>
+</div>
+
+        
+        <div id="map"></div>
+
+        
+
+        
+        <div class="foot">
+
+</div>
+        <script>
+            feather.replace()
+
+            var map = L.map('map').setView([50.77546,6.08387], 14);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            var rs = L.marker([50.76772, 6.09129], 
+                {
+                    title: 'Railway Station',
+                }).addTo(map);
+            var oc = L.marker([50.78554, 6.04286], 
+                {
+                    title: 'Big Lab Name',
+                }).addTo(map);
+
+        </script>
+    </body>
+</html>

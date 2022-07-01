@@ -1,0 +1,14 @@
+title: Something
+email: surelynottrue@gmail.com
+description: >-
+  Description for the google results
+baseurl: ""
+# url: "https://something.github.io"
+github_username:  surelynotture
+
+# Build settings
+# markdown: kramdown
+# kramdown:
+#   math_engine: katex
+plugins:
+  - jekyll-feed

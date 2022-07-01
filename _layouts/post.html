@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{page.category}} | {{ site.title }}</title>
+        <link rel="stylesheet" href="{{ site.url }}/assets/styles/styles.css">
+    </head>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <body>
+        {% include nav.html %}
+
+        
+        <div id="map"></div>
+
+        {{ content }}
+        
+        {% include foot.html %}
+        <script>
+            feather.replace()
+        </script>
+    </body>
+</html>

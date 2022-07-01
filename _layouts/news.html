@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home | {{ site.title }}</title>
+        <link rel="stylesheet" href="{{ site.url }}/assets/styles/styles.css">
+    </head>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <body>
+        {% include nav.html %}
+        <div class="text">
+            {{ content }}
+        </div>
+        
+        <div class="news-full">
+            {% assign i = 0 %}
+            {% for news-item in site.posts %}
+                {% if news-item.category == "News"%}
+                {% assign i = i | plus:1 %}
+                <div class="news-item">
+                    <b>{{ news-item.title }}</b>
+                    {{ news-item.content }}<br>
+                    <div class="card-button"><i class="feather-small" data-feather="calendar"></i> {{ news-item.date | date: "%d/%m" }} </div>
+                    {% if news-item.announcement %}
+                        <div class="card-button"><i class="feather-small" data-feather="trello"></i> <a href="{{ news-item.announcement }}">Announcement</a></div>
+                    {% endif %}
+                    {% if news-item.paper %}
+                        <div class="card-button"><i class="feather-small" data-feather="file-text"></i> <a href="{{ news-item.paper }}">Paper</a></div>
+                    {% endif %}
+                    {% if news-item.code %}
+                        <div class="card-button"><i class="feather-small" data-feather="code"></i> <a href="{{ news-item.code }}">Code</a></div>
+                    {% endif %}
+                    {% if news-item.data %}
+                        <div class="card-button"><i class="feather-small" data-feather="archive"></i> <a href="{{ news-item.data }}">Data</a></div>
+                    {% endif %}
+                </div>
+                {% endif %}
+            {% endfor %}              
+        </div>
+
+        {% include foot.html %}
+        <script>
+            feather.replace()
+        </script>
+    </body>
+</html>
